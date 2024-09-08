@@ -1,0 +1,14 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h2>Update Your Profile</h2>
+  <form method="post" enctype="multipart/form-data">  <!-- 需要 enctype="multipart/form-data" 来上传文件 -->
+    {% csrf_token %}
+    {{ form.as_p }}  <!-- 渲染表单字段 -->
+    <button type="submit">Save Changes</button>
+  </form>
+
+  {% if user.avatar %}
+    <img src="{{ user.avatar.url }}" alt="{{ user.username }}'s Avatar" width="150" height="150">
+  {% endif %}
+{% endblock %}
