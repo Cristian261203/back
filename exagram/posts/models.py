@@ -23,7 +23,7 @@ class Like(models.Model):
 
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)#settings.AUTH_USER_MODEL: 这个引用让你的模型指向你项目中的自定义用户模型，无论它叫什么名字。这样可以确保在使用自定义用户模型时，不会出现错误。
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     

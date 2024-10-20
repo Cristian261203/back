@@ -12,7 +12,7 @@ class UserRegisterForm(UserCreationForm):
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ['avatar', 'email']  # 选择要在表单中显示的字段
+        fields = ['avatar', 'email']  
 
 class ProfileUpdateForm(forms.ModelForm):
     class Meta:
