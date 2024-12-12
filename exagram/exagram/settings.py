@@ -48,7 +48,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',  
+    #'django.middleware.csrf.CsrfViewMiddleware',  
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -132,9 +132,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # CORS settings
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
+    'http://127.0.0.1:3000',
+    'http://localhost:8000',
     'http://127.0.0.1:8000',
-    'http://192.168.1.8:3000',
-
 ]
 
 CORS_ALLOW_CREDENTIALS = True  
@@ -158,23 +158,23 @@ CORS_ALLOW_METHODS = [
 ]
 
 # CSRF settings
+
 CSRF_TRUSTED_ORIGINS = [
+    'http://localhost:3000',
+    'http://127.0.0.1:3000',
+    'http://localhost:8000',
     'http://127.0.0.1:8000',
-    'http://192.168.1.8:3000',
-    "http://localhost:3000",
 ]
 
-# CSRF cookie settings
-CSRF_COOKIE_SECURE = False  
+CSRF_COOKIE_HTTPONLY = False  # 允许前端读取 CSRF Token
+CSRF_COOKIE_SAMESITE = 'Lax' 
+CSRF_COOKIE_SECURE = False    # 如果不是 HTTPS，必须设置为 False
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework.authentication.SessionAuthentication',#post
-        'rest_framework.authentication.TokenAuthentication',#post
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'rest_framework.authentication.SessionAuthentication',  # 仅启用会话认证
     ),
     'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated',
+        'rest_framework.permissions.IsAuthenticated',  # 需要认证的视图要求登录用户
     ),
 }
-

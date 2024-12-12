@@ -1,0 +1,6 @@
+Django>=5.1
+djangorestframework
+djangorestframework-simplejwt
+django-debug-toolbar
+django-cors-headers
+django-extensions
